@@ -1,0 +1,62 @@
+DELIMITER $$
+
+CREATE FUNCTION cekStok(nStok int(3)) RETURNS VARCHAR(7) DETERMINISTIC
+BEGIN
+    IF nStok =0  THEN
+	RETURN 'HABIS';
+    ELSEIF (nStok >= 1 AND nStok <= 5) THEN
+        RETURN 'WASPADA';
+    ELSEIF nStok > 5 THEN
+        RETURN 'AMAN';
+    END IF;
+END$$
+DELIMITER ;
+
+sumber belajar : https://www.mysqltutorial.org/mysql-stored-function/
+
+Kasus mengakses tabel kategori - seluruh record
+nama prosedure : getKategoriAll()
+
+DELIMITER $$
+ 
+CREATE PROCEDURE getKategoriAll()
+BEGIN
+    SELECT * FROM kategori;
+END$$
+
+DELIMITER ;
+
+
+Memanggil store procedure
+CALL nm_store_procdure()
+
+>>CALL getKategoriAll();
+
+
+TIps:
+Menampilkan daftar store prosedure dalam database
+
+SHOW PROCEDURE STATUS WHERE db='experimen';
+
+Menghapus store procedure
+DROP PROCEDURE getKategoriAll;
+
+//by id
+DELIMITER $$
+ 
+CREATE PROCEDURE getKategoribyId(id int (3))
+BEGIN
+    SELECT * FROM kategori WHERE kategori.id = id;
+END$$
+
+DELIMITER ;
+
+//by name
+DELIMITER $$
+ 
+CREATE PROCEDURE getKategoribyName(kategori varchar(100))
+BEGIN
+    SELECT * FROM kategori WHERE kategori.kategori = kategori;
+END$$
+
+DELIMITER ;
