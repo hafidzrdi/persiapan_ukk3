@@ -100,4 +100,17 @@ class KategoriController extends Controller
             return redirect()->route('kategori.index')->with(['success' => 'Data Berhasil Dihapus!']);
         }
     }
+
+    function getAPIKategori(){
+        $rsetKategori = Kategori::all();
+        $data = array("data"=>$rsetKategori);
+
+        return response()->json($data);
+    }
+
+    // function getAPIKategori1($id){
+    //     $rsetKategori = Kategori::find($id);
+    //     $data = array("data"=>$rsetKategori);
+    //     return response()->json($data);
+    // }
 }
