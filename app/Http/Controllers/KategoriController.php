@@ -108,9 +108,9 @@ class KategoriController extends Controller
         return response()->json($data);
     }
 
-    // function getAPIKategori1($id){
-    //     $rsetKategori = Kategori::find($id);
-    //     $data = array("data"=>$rsetKategori);
-    //     return response()->json($data);
-    // }
+    function getAPIKategori1($id){
+        $rsetKategori = Kategori::find($id);
+        $data = array("data"=>$rsetKategori);
+        return response()->json($data);
+    }
 }
